@@ -17,3 +17,6 @@ gui개발을 위해서 pyQt5를 쓸지 뭘 쓸지는 준형씨가 결정해서 �
 도움이 될 듯한 링크
 https://tykimos.github.io/2017/04/09/RNN_Layer_Talk/
 
+https://wiki.python.org/moin/PythonInMusic
+
+
