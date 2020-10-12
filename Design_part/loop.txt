@@ -1,0 +1,39 @@
+Loop 만들기 기능
+
+사이트: https://codepen.io/rachelnabors/pen/gcump
+
+HTML
+
+<div class="tuna"></div>
+
+<input type="button" value="Play loop!" />
+
+<!--Notice the pauses in the loopage. So sad. Why you hurt me so, browsers?-->
+<audio loop>
+  <source src="http://stash.rachelnabors.com/music/byakkoya_single.mp3" type='audio/mpeg; codecs="mp3"'/>
+  <source src="http://stash.rachelnabors.com/music/byakkoya_single.ogg" type='audio/ogg; codecs="vorbis"' />
+</audio>
+
+CSS
+.tuna {
+  animation: walk-cycle 1s steps(12) infinite;
+  background: url(http://stash.rachelnabors.com/img/codepen/tuna_sprite.png) 0 0 no-repeat; 
+  height: 200px;
+  width: 400px;
+  margin: 100px auto 0;
+}
+
+@keyframes walk-cycle {  
+  0% {background-position: 0 0; } 
+  100% {background-position: 0 -2391px; } 
+}
+
+html {text-align: center;}
+
+JS
+document.querySelector('input').addEventListener('click', playMusic);
+
+function playMusic() {  
+  document.querySelector('audio').play();
+  // audio tags have play
+};
