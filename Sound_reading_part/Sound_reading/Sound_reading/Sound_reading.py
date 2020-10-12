@@ -1,5 +1,6 @@
 # ver 1.0.0
 # last debuging: LSH 2020/10/12
+# 음의 범위가 b3 ~ f5를 벗어나는 것에 대한 수정 필요
 
 from scipy.io import wavfile
 from scipy import signal
@@ -38,6 +39,8 @@ def scale(note):
         elif ((orderedDict[numDict[i-1]] + orderedDict[numDict[i]])/2 <= note and (orderedDict[numDict[i]] + orderedDict[numDict[i+1]])/2 > note):
             return  numDict[i]
 
+###########################################################################################################################
+
 def makeGraph(freq, time, spect):
     plt.pcolormesh(time, freq, spect)
     plt.ylabel('Frequency [Hz]')
@@ -68,11 +71,13 @@ def changeNote(File, freq, time, spect):
         print("clear")
         File.write(str(s) + "\n")
 
+##################################################################################################
+
 if __name__ == '__main__':
     f = open("data/pianoTest.txt", "w")
-    sample_rate, samples = wavfile.read('data/pianoTest3.wav')
+    sample_rate, samples = wavfile.read('data/sample_IU.wav') # 파일 이름 변경[LSH]
     frequencies, times, spectrogram = signal.spectrogram(samples[:, 1], sample_rate, nfft=16392, nperseg=1024)
-    #makeGraph(frequencies, times, spectrogram)
+    makeGraph(frequencies, times, spectrogram)
     changeNote(f, frequencies, times, spectrogram)
     f.close()
 
