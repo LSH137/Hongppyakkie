@@ -6,3 +6,10 @@
 
 3. 디버깅을 맡은 서연씨와 진형씨는 각자 PDF_reading_part와 Sound_reading_part를 정해서 디버깅을 하면 됩니다.
 
+
+python 환경설정 - visual studio에 python을 설치하는 것 까지만 해주세요 아래 링크 참고
+
+https://kwonkyo.tistory.com/110
+
+gui개발을 위해서 pyQt5를 쓸지 뭘 쓸지는 준형씨가 결정해서 알려주세요.
+
