@@ -13,3 +13,7 @@ https://kwonkyo.tistory.com/110
 
 gui개발을 위해서 pyQt5를 쓸지 뭘 쓸지는 준형씨가 결정해서 알려주세요.
 
+
+도움이 될 듯한 링크
+https://tykimos.github.io/2017/04/09/RNN_Layer_Talk/
+
