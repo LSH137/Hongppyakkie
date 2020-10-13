@@ -19,7 +19,7 @@ https://tykimos.github.io/2017/04/09/RNN_Layer_Talk/
 
 https://wiki.python.org/moin/PythonInMusic
 
-https://wikidocs.net/52
+파이썬 튜토리얼: https://wikidocs.net/52
 
 
 
