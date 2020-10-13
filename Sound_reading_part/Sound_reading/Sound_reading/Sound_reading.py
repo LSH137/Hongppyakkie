@@ -85,6 +85,8 @@ if __name__ == '__main__':
     flag = 1
     try:
         f = open("data/pianoTest.txt", "w")
+        f_temp = open("data/log.txt", "w")
+
         sample_rate, samples = wavfile.read('data/sample_LSH.wav') # 파일 이름 변경[LSH]
 
     except:
@@ -93,10 +95,21 @@ if __name__ == '__main__':
 
     if flag == 1:
         #frequencies, times, spectrogram = signal.spectrogram(samples[:, 1], sample_rate, nfft=16392, nperseg=1024)
-        frequencies, times, spectrogram = signal.spectrogram(samples[:, 1], sample_rate, nfft = 16392, nperseg = 2048)
-        print(samples)
-        print("frequence: ", frequencies, "spectrogram: ", spectrogram, "times: ", times)
+        frequencies, times, spectrogram = signal.spectrogram(samples[:, 1], sample_rate, nfft = 20000, nperseg = 2048)
+        print(frequencies)
 
+        frequencies_list = frequencies.tolist()
+        times_list = times.tolist()
+        spectrogram_list = spectrogram.tolist()
+
+        for i in spectrogram_list:
+            f_temp.write(str(i))
+            f_temp.write("\n")
+
+        '''
+        for i in range(len(times)):
+            print("time: {} frequence: {} spectrogram: {}\n".format(times[i]), frequencies[i], spectrogram[i])
+        '''
         makeGraph(frequencies, times, spectrogram)
 
         #changeNote(f, frequencies, times, spectrogram)
