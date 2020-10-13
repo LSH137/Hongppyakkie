@@ -102,9 +102,13 @@ if __name__ == '__main__':
         times_list = times.tolist()
         spectrogram_list = spectrogram.tolist()
 
+        n = 0
         for i in spectrogram_list:
             f_temp.write(str(i))
             f_temp.write("\n")
+            n += 1
+
+        print(n)
 
         '''
         for i in range(len(times)):
