@@ -1,5 +1,5 @@
-# ver 1.0.0
-# last debuging: LSH 2020/10/12
+# non stable version
+# last debuging: LSH 2020/10/13
 # 음의 범위가 b3 ~ f5를 벗어나는 것에 대한 수정 필요
 
 from scipy.io import wavfile
@@ -7,7 +7,7 @@ from scipy import signal
 import matplotlib.pyplot as plt
 import collections
 
-def scale(note):
+def scale(File, note):
 
     error = 5
     orderedDict = collections.OrderedDict
@@ -34,6 +34,7 @@ def scale(note):
         elif note < orderedDict[numDict[0]]: # B3보다 음이 낮으면 break
             break
         elif (orderedDict[numDict[i]] - error <= note and orderedDict[numDict[i]] + error > note): # +- error 만큼의 주파수 오차 범위 내에서 일치하는지 체크
+            File.write(str(numDic[i]))
             return numDict[i]
         '''
         elif i == 0 and (orderedDict[numDict[i]] <= note and (orderedDict[numDict[i]] + orderedDict[numDict[i+1]])/2 > note):
@@ -50,8 +51,10 @@ def makeGraph(freq, time, spect):
     plt.pcolormesh(time, freq, spect)
     plt.ylabel('Frequency [Hz]')
     plt.xlabel('Time [sec]')
+    plt.ylim(0, 700)
     plt.show()
 
+'''
 def changeNote(File, freq, time, spect):
     spect2 = spect.T
     for t, sp in enumerate(spect2):
@@ -75,21 +78,25 @@ def changeNote(File, freq, time, spect):
 
         print("clear")
         File.write(str(s) + "\n")
-
+'''
 ##################################################################################################
 
 if __name__ == '__main__':
     flag = 1
     try:
         f = open("data/pianoTest.txt", "w")
-        (sample_rate, samples) = wavfile.read('data/sample_LSH.wav') # 파일 이름 변경[LSH]
+        sample_rate, samples = wavfile.read('data/sample_LSH.wav') # 파일 이름 변경[LSH]
 
     except:
         print("error occur while opening sample file")
         flag = 0
 
     if flag == 1:
-        (frequencies, times, spectrogram) = signal.spectrogram(samples[:, 1], sample_rate, nfft=1024, nperseg=1024)
+        #frequencies, times, spectrogram = signal.spectrogram(samples[:, 1], sample_rate, nfft=16392, nperseg=1024)
+        frequencies, times, spectrogram = signal.spectrogram(samples[:, 1], sample_rate, nfft = 16392, nperseg = 2048)
+        print(samples)
+        print("frequence: ", frequencies, "spectrogram: ", spectrogram, "times: ", times)
+
         makeGraph(frequencies, times, spectrogram)
 
         #changeNote(f, frequencies, times, spectrogram)
