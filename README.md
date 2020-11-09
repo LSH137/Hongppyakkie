@@ -31,3 +31,6 @@ int main(void)
 함수의 이름은 대문자로 시작한다
 변수의 이름은 소문자로 이루어진다
 이름에 띄어쓰기가 필요할때는 언더바 _ 를 사용한다
+
+
+release version: ShowMusicScoreVer1
